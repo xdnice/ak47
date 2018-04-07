@@ -70,7 +70,7 @@ class App extends Component {
     this.state = {
       loading: false,
       hasMore: true,
-      current: 'index',
+      current: 'home',
     };
   }
   componentDidMount() {
@@ -117,13 +117,13 @@ class App extends Component {
             mode="horizontal"
             className="ant-layout-header"
           >
-            <Menu.Item key="index">
+            <Menu.Item key="home">
               <Icon className="icon" type="home" />
             </Menu.Item>
             <Menu.Item key="about">
               <Icon className="icon" type="compass" />
             </Menu.Item>
-            <Menu.Item key="my">
+            <Menu.Item key="user">
               <Icon className="icon" type="user" />
             </Menu.Item>
           </Menu>
@@ -138,7 +138,7 @@ class App extends Component {
           className="infiniteScroll"
         >
           {this.renderList(listData)}
-          { this.state.loading && <Spin className="loading" />}
+          {this.state.loading && <Spin className="loading" />}
           <div className="right">
             {
               user.map((list,index) => {
@@ -162,7 +162,7 @@ class App extends Component {
             </div>
           </div>
         </InfiniteScroll>
-     </div>
+      </div>
     );
   }
 }

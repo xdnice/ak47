@@ -20,18 +20,18 @@ class ItemCard extends Component {
   render() {
     const { index, list } = this.props;
     return (
-      <Card
-        style={{ width: 600, marginTop: 48 }}
-        key={"card" + index}
-        cover={<img alt="src" src={list.src} />}
-        actions={[<IconText type="star" text={list.star} />, <IconText type="like" text={list.like} />, <IconText type="message" text={list.message} />]}
-      >
-        <Meta
-          avatar={<Avatar src={list.avatar} />}
-          title={list.title}
-          description={list.description}
-        />
-      </Card>
+        <Card
+          style={{ width: 600, marginTop: 48 }}
+          key={"card" + index}
+          cover={<img alt="src" src={require('./../../images/1.jpg')} />}
+          actions={[<IconText type="star" text={list.star} />, <IconText type="like" text={list.like} />, <IconText type="message" text={list.message} />]}
+        >
+          <Meta
+            avatar={<Avatar src={list.avatar} />}
+            title={list.title}
+            description={list.description}
+          />
+        </Card>
     );
   }
 }
