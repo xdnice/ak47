@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router-dom";
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
-import 'antd/dist/antd.css';
 import * as styles from './index.css';
 const FormItem = Form.Item;
 
@@ -23,7 +22,7 @@ class Index extends Component {
     });
   };
   goRegister = () => {
-    this.props.history.push('/Pages/Home');
+    this.props.history.push('/pages/Home');
   }
   render() {
     const { getFieldDecorator } = this.props.form;
@@ -49,7 +48,7 @@ class Index extends Component {
               valuePropName: 'checked',
               initialValue: true,
             })(
-              <Checkbox>记住我</Checkbox>
+              <Checkbox>记住我123123244444</Checkbox>
             )}
             <a className="login-form-forgot" href="">忘记密码</a>
             <Button type="primary" htmlType="submit" className="login-form-button">

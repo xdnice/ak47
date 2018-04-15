@@ -5,10 +5,11 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import createHistory from 'history/createBrowserHistory';
 import reducers from './reducers/reducers';
 import Layout from './components/Layout/Layout';
-import About from './Pages/About/index';
-import Home from './Pages/Home/index';
-import Register from './Pages/Register/index';
-import User from './Pages/User/index';
+import About from './pages/About/index';
+import 'babel-polyfill';
+import Home from './pages/Home/index';
+import Register from './pages/Register/index';
+import User from './pages/User/index';
 import { ConnectedRouter, routerReducer, routerMiddleware, push } from 'react-router-redux';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 const history = createHistory();
@@ -26,15 +27,15 @@ const routes = [
     component: Layout
   },
   {
-    path: "/Pages/About",
+    path: "/pages/About",
     component: About
   },
   {
-    path: "/Pages/Home",
+    path: "/pages/Home",
     component: Home
   },
   {
-    path: "/Pages/Register",
+    path: "/pages/Register",
     component: Register
   },
 ];

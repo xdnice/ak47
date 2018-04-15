@@ -1,7 +1,6 @@
 import React,{ Component } from 'react';
 import { connect } from 'react-redux';
 import { Avatar } from 'antd';
-import 'antd/dist/antd.css';
 import * as styles from './ItemAvatar.css';
 class ItemAvatar extends Component {
   constructor(props) {

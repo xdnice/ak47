@@ -1,7 +1,6 @@
 import React,{ Component } from 'react';
 import { connect } from 'react-redux';
 import { Icon, Avatar, Card } from 'antd';
-import 'antd/dist/antd.css';
 const { Meta } = Card;
 
 const IconText = ({ type, text }) => (

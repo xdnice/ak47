@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 import { Menu, Icon, List, Spin, Affix } from 'antd';
 import ItemCard from './../../components/ItemCard/ItemCard.js';
 import ItemAvatar from './../../components/ItemAvatar/ItemAvatar.js';
-import 'antd/dist/antd.css';
 import * as styles from './index.css';
 
 const IconText = ({ type, text }) => (

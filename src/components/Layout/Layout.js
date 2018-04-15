@@ -1,11 +1,10 @@
 import React,{ Component } from 'react';
 import { connect } from 'react-redux';
 import { Menu, Icon, Affix } from 'antd';
-import 'antd/dist/antd.css';
 import * as styles from './Layout.css';
-import Home from './../../Pages/Home/index.js';
-import About from './../../Pages/About/index.js';
-import User from './../../Pages/User/index.js';
+import Home from './../../pages/Home/index.js';
+import About from './../../pages/About/index.js';
+import User from './../../pages/User/index.js';
 class Layout extends Component {
   constructor(props) {
     super(props);

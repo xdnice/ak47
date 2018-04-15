@@ -1,7 +1,6 @@
 import React,{ Component } from 'react';
 import { connect } from 'react-redux';
 import { Menu } from 'antd';
-import 'antd/dist/antd.css';
 import * as styles from './index.css';
 class Index extends Component {
   constructor(props) {
