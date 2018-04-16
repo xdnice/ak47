@@ -1,30 +1,24 @@
+//开发环境
 const path = require('path');
 const webpack = require('webpack');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = {
-  mode: 'production',
   devtool: 'inline-source-map',
+  mode: 'development',
   entry: {
     index: './src/index.js'
   },
   output: {
-    filename: '[chunkhash].js',
+    filename: '[name].js',
+    hashDigestLength: 7,
     path: path.resolve(__dirname, 'build'),
-    publicPath: './'
+    publicPath: '/'
   },
-  plugins: [
-    // new CleanWebpackPlugin(['build']),
-    new HtmlWebpackPlugin({
-      title: 'ShareImage',
-      template: 'src/index.html'
-    }),
-    new ExtractTextPlugin("styles.css"),
-    new UglifyJSPlugin({
-      sourceMap: true,
-    })
-  ],
+  resolve: {
+    extensions: ['.js', '.jsx', 'css']
+  },
   module: {
     rules: [
       {
@@ -40,14 +34,10 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        /*use: ExtractTextPlugin.extract({
+        use: ExtractTextPlugin.extract({
           fallback: "style-loader",
           use: "css-loader"
-        })*/
-        use: [
-          "style-loader",
-          "css-loader"
-        ]
+        })
       },
       {
         test: /\.(png|svg|jpg|gif|ico)$/,
@@ -63,27 +53,24 @@ module.exports = {
       }
     ]
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'ShareImage',
+      template: 'src/index.html'
+    }),
+    new ExtractTextPlugin({
+      filename: '[name].css'
+    }),
+    new UglifyJSPlugin({
+      test: /(\.jsx|\.js)$/,
+      extractComments: true,
+    }),
+    new webpack.NamedModulesPlugin(),
+    new webpack.HotModuleReplacementPlugin()
+  ],
   devServer: {
-    contentBase: './build',
-    compress: true
-  },
-  optimization: {
-    splitChunks: {
-      cacheGroups: {
-        commons: {
-          chunks: "initial",
-          minChunks: 2,
-          maxInitialRequests: 5, // The default limit is too small to showcase the effect
-          minSize: 0 // This is example is too small to create commons chunks
-        },
-        vendor: {
-          test: /node_modules/,
-          chunks: "initial",
-          name: "vendor",
-          priority: 10,
-          enforce: true
-        }
-      }
-    }
+    contentBase: path.resolve(__dirname,'src/index.js'),
+    compress: true,
+    hot: true
   }
 };

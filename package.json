@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "antd": "^3.4.0",
+    "assets-webpack-plugin": "^3.5.1",
     "babel": "^5.5.6",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-polyfill": "^6.26.0",
@@ -29,15 +30,16 @@
     "react-scripts": "1.1.1",
     "redux": "^3.7.2",
     "style-loader": "^0.20.3",
-    "webpack": "^4.5.0"
+    "webpack": "^4.5.0",
+    "whatwg-fetch": "^2.0.4"
   },
   "theme": {
     "primary-color": "#1DA57A"
   },
   "scripts": {
-    "start": "webpack-dev-server --open",
-    "build": "webpack",
-    "watch": "webpack --watch",
+    "start": "webpack-dev-server --open --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js",
+    "watch": "webpack --watch --config webpack.dev.js",
     "server": "node server.js --open",
     "script-name": "babel-node script.js"
   },
@@ -55,7 +57,9 @@
     "clean-webpack-plugin": "^0.1.19",
     "express": "^4.16.3",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "happypack": "^4.0.1",
     "html-webpack-plugin": "^3.2.0",
+    "webpack-bundle-analyzer": "^2.11.1",
     "webpack-cli": "^2.0.14",
     "webpack-dev-middleware": "^3.1.2",
     "webpack-dev-server": "^3.1.3",
