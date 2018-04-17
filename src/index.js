@@ -10,7 +10,6 @@ import 'babel-polyfill';
 import Home from './pages/Home/index';
 import Register from './pages/Register/index';
 import User from './pages/User/index';
-import 'whatwg-fetch';
 import { ConnectedRouter, routerReducer, routerMiddleware, push } from 'react-router-redux';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 const history = createHistory();
@@ -40,6 +39,20 @@ const routes = [
     component: Register
   },
 ];
+fetch('http://localhost:8080/user', {
+  method: "POST",
+  mode: "cors",
+  headers: {
+    "Content-Type": "application/x-www-form-urlencoded"  
+  },
+  body: 'key=1'
+})
+.then(function(response) {
+  console.log(response);
+  return response.text()
+}).then(function(body) {
+  console.log(body);
+})
 const RouteWithSubRoutes = route => (
   <Route
     path={route.path}
