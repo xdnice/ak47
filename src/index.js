@@ -39,6 +39,20 @@ const routes = [
     component: Register
   },
 ];
+/*fetch('http://47.98.231.165:8080/user', {
+  method: "POST",
+  mode: "cors",
+  headers: {
+    "Content-Type": "application/x-www-form-urlencoded"  
+  },
+  body: 'key=1'
+})
+.then(function(response) {
+  console.log(response);
+  return response.text()
+}).then(function(body) {
+  console.log(body);
+})*/
 fetch('http://localhost:8080/user', {
   method: "POST",
   mode: "cors",
