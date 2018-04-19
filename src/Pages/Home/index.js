@@ -119,7 +119,7 @@ class Index extends Component {
             {
               user.map((list,index) => {
                 return (
-                  <ItemAvatar list={list} />
+                  <ItemAvatar list={list} key={index} />
                 );
               })
             }
@@ -128,7 +128,7 @@ class Index extends Component {
               {
                 recommendedUsers.map((list,index) => {
                   return (
-                    <ItemAvatar list={list} />
+                    <ItemAvatar list={list} key={index} />
                   );
                 })
               }

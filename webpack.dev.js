@@ -5,7 +5,7 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = {
-  devtool: 'inline-source-map',
+  devtool: 'source-map',
   mode: 'development',
   entry: ['./src/index.js', 'whatwg-fetch'],
   output: {

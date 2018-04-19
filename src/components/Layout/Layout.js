@@ -9,7 +9,7 @@ class Layout extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      current: 'user',
+      current: 'home',
     };
   }
   handleClick = (e) => {
@@ -18,7 +18,6 @@ class Layout extends Component {
     })
   };
   renderContent() {
-    console.log(this.props);
     switch(this.state.current) {
       case 'home':
         return <Home />;
