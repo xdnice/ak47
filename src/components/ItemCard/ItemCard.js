@@ -1,6 +1,6 @@
 import React,{ Component } from 'react';
 import { connect } from 'react-redux';
-import { Icon, Avatar, Card } from 'antd';
+import { Icon, Avatar, Card, Col } from 'antd';
 const { Meta } = Card;
 
 const IconText = ({ type, text }) => (
@@ -19,11 +19,12 @@ class ItemCard extends Component {
   render() {
     const { index, list } = this.props;
     return (
+      <Col xs={2} sm={4} md={6} lg={8} xl={10}>
         <Card
-          style={{ width: 600, marginTop: 48 }}
+          style={{width:270}}
           key={"card" + index}
-          cover={<img alt="src" src={require('./../../images/1.jpg')} />}
-          actions={[<IconText type="star" text={list.star} />, <IconText type="like" text={list.like} />, <IconText type="message" text={list.message} />]}
+          cover={<img alt="src" src='https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png' />}
+          actions={[<IconText type="star" text={list.star} />, <IconText type="like" text={list.like} />]}
         >
           <Meta
             avatar={<Avatar src={list.avatar} />}
@@ -31,6 +32,7 @@ class ItemCard extends Component {
             description={list.description}
           />
         </Card>
+      </Col>
     );
   }
 }

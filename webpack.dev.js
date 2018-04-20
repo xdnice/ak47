@@ -14,9 +14,6 @@ module.exports = {
     path: path.resolve(__dirname, 'build'),
     publicPath: '/'
   },
-  resolve: {
-    extensions: ['.js', '.jsx', 'css']
-  },
   module: {
     rules: [
       {
@@ -38,7 +35,7 @@ module.exports = {
         })
       },
       {
-        test: /\.(png|svg|jpg|gif|ico)$/,
+        test: /\.(png|svg|jpg|gif|jpeg)$/,
         use: [
           'file-loader'
         ]
@@ -54,17 +51,14 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       title: 'ShareImage',
-      template: 'src/index.html'
+      template: 'public/index.html'
     }),
     new ExtractTextPlugin({
       filename: '[name].css'
-    }),
-    new webpack.NamedModulesPlugin(),
-    new webpack.HotModuleReplacementPlugin()
+    })
   ],
   devServer: {
     contentBase: path.resolve(__dirname,'src/index.js'),
-    compress: true,
-    hot: true
+    compress: true
   }
 };

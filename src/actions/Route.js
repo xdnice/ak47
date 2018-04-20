@@ -8,8 +8,7 @@ const getData = (dispatch,count) => {
       title: `Title Jiang ${i}`,
       description:'Rise n’ shine and don’t forget to smile',
       star: i * 2,
-      like: i * 3,
-      message: i * 4,
+      like: i * 3
     });
   }
   dispatch({

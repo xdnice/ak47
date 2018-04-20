@@ -3,6 +3,7 @@ const path = require('path');
 const webpack = require('webpack');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = {
   mode: 'production',
@@ -13,7 +14,7 @@ module.exports = {
     filename: '[name].[hash].js',
     hashDigestLength: 7,
     path: path.resolve(__dirname, 'build'),
-    publicPath: '/'
+    publicPath: './'
   },
   resolve: {
     extensions: ['.js', '.jsx', 'css']
@@ -39,7 +40,7 @@ module.exports = {
         })
       },
       {
-        test: /\.(png|svg|jpg|gif|ico)$/,
+        test: /\.(png|svg|jpg|gif|jpeg)$/,
         use: [
           'file-loader'
         ]
@@ -53,10 +54,10 @@ module.exports = {
     ]
   },
   plugins: [
-    // new CleanWebpackPlugin(['build']),
+    new CleanWebpackPlugin(['build']),
     new HtmlWebpackPlugin({
       title: 'ShareImage',
-      template: 'src/index.html'
+      template: 'public/index.html'
     }),
     new ExtractTextPlugin({
       filename: '[name].[hash].css'

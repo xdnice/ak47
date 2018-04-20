@@ -64,4 +64,6 @@ const WrappedNormalLoginForm = Form.create()(Index);
 function mapStateToProps(state,oWnprops) {
   return state;
 }
+
+// ReactDOM.render(Index, document.getElementById('root'));
 export default connect(mapStateToProps)(withRouter(WrappedNormalLoginForm));

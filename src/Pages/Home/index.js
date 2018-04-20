@@ -3,10 +3,11 @@ import ReactDOM from 'react-dom';
 import { getData } from './../../actions/Route';
 import InfiniteScroll from 'react-infinite-scroller';
 import { connect } from 'react-redux';
-import { Menu, Icon, List, Spin, Affix } from 'antd';
+import { browserHistory } from 'react-router';
+import { Menu, Icon, List, Spin, Affix, Row, Col, Layout } from 'antd';
 import ItemCard from './../../components/ItemCard/ItemCard.js';
-import ItemAvatar from './../../components/ItemAvatar/ItemAvatar.js';
-import * as styles from './index.css';
+import './index.css';
+const { Header, Footer, Sider, Content } = Layout;
 
 const IconText = ({ type, text }) => (
   <span>
@@ -28,11 +29,11 @@ const recommendedUsers = [
     name: 'Thomas',
   },
   {
-    src: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
+    src: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png',
     name: 'Thomas2',
   },
   {
-    src: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
+    src: 'https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png',
     name: 'Thomas3',
   },
   {
@@ -99,45 +100,57 @@ class Index extends Component {
     });
     return listArray;
   }
+  /**
+   * [clickLogo logo点击]
+   * @author  Jiang
+   * @return {[type]} [description]
+   */
+  clickLogo() {
+    this.props.history.push('/');
+  }
+  /**
+   * [clickIcon 用户点击]
+   * @author  Jiang
+   * @return {[type]} [description]
+   */
+  clickUser() {
+    console.log(this.props);
+    this.props.history.push('./../user');
+  }
   render() {
     const { loading, data } = this.state;
     const { listData, count } = this.props.reducers.layout;
     return (
-      <div className="content">
-        <InfiniteScroll
-          initialLoad={false}
-          pageStart={0}
-          loadMore={this.handleInfiniteOnLoad}
-          hasMore={!this.state.loading && this.state.hasMore}
-          useWindow={true}
-          threshold={10}
-          className="infiniteScroll"
-        >
-          {this.renderList(listData)}
+      <div>
+        <Affix>
+          <Header className="navigation">
+            <Row className="row">
+              <Col span={12}>
+                <div className="logo" onClick={this.clickLogo.bind(this)}></div>
+              </Col>
+              <Col span={12}>
+                <div className="user">
+                  <Icon type="user" className="icon" onClick={this.clickUser.bind(this)}/>
+                </div>
+              </Col>
+            </Row>
+          </Header>
+        </Affix>
+        <Content>
+          <InfiniteScroll
+            initialLoad={false}
+            pageStart={0}
+            loadMore={this.handleInfiniteOnLoad}
+            hasMore={!this.state.loading && this.state.hasMore}
+            useWindow={true}
+            threshold={10}
+          >
+          <Row>
+            {this.renderList(listData)}
+          </Row>
           {this.state.loading && <Spin className="loading" />}
-          <div className="right">
-            {
-              user.map((list,index) => {
-                return (
-                  <ItemAvatar list={list} key={index} />
-                );
-              })
-            }
-            <div className="fastBeat">快拍</div>
-            <div className="recommendedUsers">
-              {
-                recommendedUsers.map((list,index) => {
-                  return (
-                    <ItemAvatar list={list} key={index} />
-                  );
-                })
-              }
-            </div>
-            <div className="copyRight">
-              © 2018 ShareImage
-            </div>
-          </div>
-        </InfiniteScroll>
+          </InfiniteScroll>
+        </Content>
       </div>
     );
   }

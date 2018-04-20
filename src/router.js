@@ -1,5 +1,4 @@
 import React from 'react';
-import Layout from './components/Layout/Layout';
 import About from './pages/About/index';
 import Home from './pages/Home/index';
 import Register from './pages/Register/index';
@@ -8,19 +7,19 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 const routes = [
   {
     path: "/",
-    component: Layout
+    component: Home
   },
   {
     path: "/about",
     component: About
   },
   {
-    path: "/home",
-    component: Home
-  },
-  {
     path: "/register",
     component: Register
+  },
+  {
+    path: "/user",
+    component: User
   },
 ]
 
