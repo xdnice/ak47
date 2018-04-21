@@ -1,4 +1,6 @@
 //开发环境
+
+//"start": "webpack-dev-server --open --config webpack.dev.js",
 const path = require('path');
 const webpack = require('webpack');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
@@ -11,8 +13,7 @@ module.exports = {
   output: {
     filename: '[name].js',
     hashDigestLength: 7,
-    path: path.resolve(__dirname, 'build'),
-    publicPath: '/'
+    path: path.resolve(__dirname, 'build')
   },
   module: {
     rules: [
@@ -58,7 +59,8 @@ module.exports = {
     })
   ],
   devServer: {
-    contentBase: path.resolve(__dirname,'src/index.js'),
+    historyApiFallback: true,
+    // contentBase: path.resolve(__dirname,'src/index.js'),
     compress: true
   }
 };

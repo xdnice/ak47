@@ -6,10 +6,10 @@ import createHistory from 'history/createBrowserHistory';
 import reducers from './reducers/reducers';
 import { ConnectedRouter, routerReducer, routerMiddleware } from 'react-router-redux';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { routeConfig } from './router';
 const history = createHistory();
 const middleware = routerMiddleware(history);
 // import { requestPost } from './request';
-import { routeConfig } from './router';
 const store = createStore (
   combineReducers({
     reducers:reducers,

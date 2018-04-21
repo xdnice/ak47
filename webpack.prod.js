@@ -68,7 +68,11 @@ module.exports = {
     })
   ],
   devServer: {
-    contentBase: path.resolve(__dirname,'src/index.js'),
+    historyApiFallback: true,
+    // contentBase: path.resolve(__dirname,'src/index.js'),
     compress: true
+  },
+  externals: {
+    "antd":"antd"
   }
 };

@@ -1,5 +1,5 @@
 
-.loading {
+:global(.ant-spin-spinning) {
     margin-top: 10px;
     display: flex;
     justify-content: center;

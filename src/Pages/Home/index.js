@@ -115,7 +115,7 @@ class Index extends Component {
    */
   clickUser() {
     console.log(this.props);
-    this.props.history.push('./../user');
+    this.props.history.push('/user');
   }
   render() {
     const { loading, data } = this.state;
@@ -148,7 +148,7 @@ class Index extends Component {
           <div className="cardDiv">
             {this.renderList(listData)}
           </div>
-          {this.state.loading && <Spin className="loading" />}
+          {this.state.loading && <Spin style={{marginTop: 10, display: 'flex', justifyContent: 'center', alignItems: 'center'}}/>}
           </InfiniteScroll>
         </Content>
       </div>
