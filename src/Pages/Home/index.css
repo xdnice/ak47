@@ -6,11 +6,6 @@
     align-items: center;
 }
 
-.navigation {
-    background-color: #fff;
-    border-bottom: 1px solid #e1e1e1;
-}
-
 .row {
     display: flex;
     flex-direction: row;

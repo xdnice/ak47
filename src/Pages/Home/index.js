@@ -123,7 +123,7 @@ class Index extends Component {
     return (
       <div>
         <Affix>
-          <Header className="navigation">
+          <Header style={{background: '#fff',borderBottom: '1px solid #e1e1e1'}}>
             <Row className="row">
               <Col span={12}>
                 <div className="logo" onClick={this.clickLogo.bind(this)}></div>

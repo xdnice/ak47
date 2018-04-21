@@ -1,4 +1,5 @@
 const express = require('express');
+const compression = require('compression');
 const webpack = require('webpack');
 const bodyParser = require("body-parser");
 const mysql      = require('mysql');
@@ -9,6 +10,8 @@ const compiler = webpack(config);
 
 var data = { "name": "Test", "age": "19" };
 app.use(bodyParser.urlencoded({ extended: false }));  
+app.use(compression());
+
 
 app.all('*', function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");  
