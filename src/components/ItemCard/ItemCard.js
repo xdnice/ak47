@@ -1,6 +1,7 @@
 import React,{ Component } from 'react';
 import { connect } from 'react-redux';
 import { Icon, Avatar, Card, Col } from 'antd';
+import './ItemCard.css';
 const { Meta } = Card;
 
 const IconText = ({ type, text }) => (
@@ -18,21 +19,26 @@ class ItemCard extends Component {
   }
   render() {
     const { index, list } = this.props;
+    let image;
+    if(index % 2 == 0) {
+      image = 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png';
+    } else {
+      image = 'https://scontent-hkg3-2.cdninstagram.com/vp/aaa8549b167a92398d44a82b693920e3/5B560C10/t51.2885-15/e35/29738167_210452009715163_8841223009546010624_n.jpg';
+    }
     return (
-      <Col xs={2} sm={4} md={6} lg={8} xl={10}>
-        <Card
-          style={{width:270}}
-          key={"card" + index}
-          cover={<img alt="src" src='https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png' />}
-          actions={[<IconText type="star" text={list.star} />, <IconText type="like" text={list.like} />]}
-        >
-          <Meta
-            avatar={<Avatar src={list.avatar} />}
-            title={list.title}
-            description={list.description}
-          />
-        </Card>
-      </Col>
+      <Card
+        className="card"
+        key={"card" + index}
+        hoverable
+        cover={<img alt="src" src={image} className="image" />}
+        actions={[<IconText type="star" text={list.star} />, <IconText type="like" text={list.like} />]}
+      >
+        <Meta
+          avatar={<Avatar src={list.avatar} />}
+          title={list.title}
+          description={list.description}
+        />
+      </Card>
     );
   }
 }

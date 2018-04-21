@@ -26,6 +26,7 @@ const routes = [
 const RouteWithSubRoutes = route => (
   <Route
     path={route.path}
+    exact
     render={props => (
       <route.component {...props} routes={route.routes} />
     )}

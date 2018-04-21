@@ -24,7 +24,6 @@
     width: 100px;
     height: 60px;
     background-position-y: -8px;
-    cursor: pointer;
 }
 
 .icon {
@@ -35,4 +34,8 @@
 .user {
     float: right;
     cursor: pointer;
+}
+
+.cardDiv {
+    text-align: center;
 }

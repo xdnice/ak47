@@ -75,7 +75,7 @@ class Index extends Component {
   }
   componentDidMount() {
     const { dispatch } = this.props;
-    getData(dispatch,10);
+    getData(dispatch,6);
   }
   handleInfiniteOnLoad = (page) => {
     this.setState({
@@ -84,7 +84,7 @@ class Index extends Component {
     setTimeout(() => {
       const { dispatch } = this.props;
       const { count } = this.props.reducers.layout;
-      getData(dispatch,count + 10);
+      getData(dispatch,count + 6);
     },500);
     setTimeout(() => {
       this.setState({
@@ -95,7 +95,7 @@ class Index extends Component {
   renderList(listData) {
     const listArray = listData.map((list,index) => {
       return (
-        <ItemCard list={list} key={"card" + index} />
+        <ItemCard list={list} key={"card" + index} index={index} />
       );
     });
     return listArray;
@@ -145,9 +145,9 @@ class Index extends Component {
             useWindow={true}
             threshold={10}
           >
-          <Row>
+          <div className="cardDiv">
             {this.renderList(listData)}
-          </Row>
+          </div>
           {this.state.loading && <Spin className="loading" />}
           </InfiniteScroll>
         </Content>

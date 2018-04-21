@@ -1,0 +1,43 @@
+.card {
+    width: 350px;
+    margin: 12px 0px;
+    vertical-align: top;
+    display: inline-block;
+}
+
+.ant-card-meta-title {
+    text-align: left;
+}
+
+.ant-card-meta-description {
+    text-align: left;
+}
+
+@media only screen and (min-width: 320px) {
+    .card {
+        width: 295px;
+        margin: 12px 0px;
+    }
+}
+
+@media only screen and (min-width: 375px) {
+    .card {
+        width: 350px;
+        margin: 12px 0px;
+    }
+}
+
+@media only screen and (min-width: 414px) {
+    .card {
+        width: 389px;
+        margin: 12px 0px;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .card {
+        vertical-align: top;
+        width: 320px;
+        margin: 12px;
+    }
+}

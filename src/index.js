@@ -26,6 +26,7 @@ const store = createStore (
     console.log(data);
   }
 });*/
+console.log(history);
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>

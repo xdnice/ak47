@@ -20,16 +20,16 @@ app.all('*', function(req, res, next) {
 });
 
 app.get('/', function(req, res) {
-    console.log('get..........');
-    console.log(req.query);
-    if (req.query && req.query.callback) {  
-        var str = req.query.callback + "(" + JSON.stringify(data) + ")"; //jsonp    
-        console.log('jsonp: '+str);  
-        res.end(str);  
-    } else {
-        console.log('json: '+JSON.stringify(data));  
-        res.end(JSON.stringify(data));  
-    }
+  console.log('get..........');
+  console.log(req.query);
+  if (req.query && req.query.callback) {  
+    var str = req.query.callback + "(" + JSON.stringify(data) + ")"; //jsonp    
+    console.log('jsonp: '+str);  
+    res.end(str);  
+  } else {
+    console.log('json: '+JSON.stringify(data));  
+    res.end(JSON.stringify(data));  
+  }
 });
 
 app.post('/user', function(req, res) {
@@ -39,13 +39,6 @@ app.post('/user', function(req, res) {
   res.end(data);
 });
 
-// Tell express to use the webpack-dev-middleware and use the webpack.config.js
-// configuration file as a base.
-/*app.use(webpackDevMiddleware(compiler, {
-  publicPath: config.output.publicPath
-}));*/
-
-// Serve the files on port 8080.
 app.listen(8080, function () {
   console.log('Example app listening on port 8080!\n');
 });
