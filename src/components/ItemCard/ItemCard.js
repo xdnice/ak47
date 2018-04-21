@@ -20,11 +20,7 @@ class ItemCard extends Component {
   render() {
     const { index, list } = this.props;
     let image;
-    if(index % 2 == 0) {
-      image = 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png';
-    } else {
-      image = 'https://scontent-hkg3-2.cdninstagram.com/vp/aaa8549b167a92398d44a82b693920e3/5B560C10/t51.2885-15/e35/29738167_210452009715163_8841223009546010624_n.jpg';
-    }
+    image = 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png';
     return (
       <Card
         className="card"

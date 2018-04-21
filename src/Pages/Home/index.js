@@ -75,7 +75,7 @@ class Index extends Component {
   }
   componentDidMount() {
     const { dispatch } = this.props;
-    getData(dispatch,6);
+    getData(dispatch,24);
   }
   handleInfiniteOnLoad = (page) => {
     this.setState({
@@ -84,7 +84,7 @@ class Index extends Component {
     setTimeout(() => {
       const { dispatch } = this.props;
       const { count } = this.props.reducers.layout;
-      getData(dispatch,count + 6);
+      getData(dispatch,count + 24);
     },500);
     setTimeout(() => {
       this.setState({
