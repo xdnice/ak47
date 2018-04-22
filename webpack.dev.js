@@ -7,7 +7,7 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = {
-  devtool: 'source-map',
+  devtool: 'eval-source-map',
   mode: 'development',
   entry: ['./src/index.js', 'whatwg-fetch'],
   output: {
@@ -56,11 +56,14 @@ module.exports = {
     }),
     new ExtractTextPlugin({
       filename: '[name].css'
-    })
+    }),
+    new webpack.NamedModulesPlugin(),
+    new webpack.HotModuleReplacementPlugin()
   ],
   devServer: {
+    hot: true,
     historyApiFallback: true,
-    // contentBase: path.resolve(__dirname,'src/index.js'),
+    //contentBase: path.resolve(__dirname,'src/index.js'),
     compress: true
   }
 };

@@ -6,6 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = {
+  devtool: 'hidden-source-map',
   mode: 'production',
   entry: {
     index: './src/index.js'

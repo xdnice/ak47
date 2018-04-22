@@ -1,70 +1,12 @@
 import React,{ Component } from 'react';
-import ReactDOM from 'react-dom';
 import { getData } from './../../actions/Route';
 import InfiniteScroll from 'react-infinite-scroller';
 import { connect } from 'react-redux';
-import { browserHistory } from 'react-router';
 import { Menu, Icon, List, Spin, Affix, Row, Col, Layout } from 'antd';
 import ItemCard from './../../components/ItemCard/ItemCard.js';
 import './index.css';
 const { Header, Footer, Sider, Content } = Layout;
 
-const IconText = ({ type, text }) => (
-  <span>
-    <Icon type={type} style={{ marginRight: 8 }} />
-    {text}
-  </span>
-);
-
-const user = [
-  {
-    src: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-    name: 'Thomas',
-  }
-]
-
-const recommendedUsers = [
-  {
-    src: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-    name: 'Thomas',
-  },
-  {
-    src: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png',
-    name: 'Thomas2',
-  },
-  {
-    src: 'https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png',
-    name: 'Thomas3',
-  },
-  {
-    src: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-    name: 'Thomas4',
-  },
-  {
-    src: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-    name: 'Thomas5',
-  },
-  {
-    src: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-    name: 'Thomas6',
-  },
-  {
-    src: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-    name: 'Thomas7',
-  },
-  {
-    src: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-    name: 'Thomas8',
-  },
-  {
-    src: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-    name: 'Thomas9',
-  },
-  {
-    src: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-    name: 'Thomas10',
-  }
-]
 class Index extends Component {
   constructor(props) {
     super(props);
@@ -114,7 +56,6 @@ class Index extends Component {
    * @return {[type]} [description]
    */
   clickUser() {
-    console.log(this.props);
     this.props.history.push('/user');
   }
   render() {

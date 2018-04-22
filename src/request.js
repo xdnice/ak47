@@ -1,5 +1,5 @@
 /**
- * 请求API
+ * 封装Fetch API
  * @author  Jiang
  */
 import { message } from 'antd';
