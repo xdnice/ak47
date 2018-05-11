@@ -34,3 +34,11 @@
 .cardDiv {
     text-align: center;
 }
+
+a:link {
+    color: yellow;
+}
+
+a:visited {
+    color: red;
+}

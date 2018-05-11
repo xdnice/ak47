@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import createHistory from 'history/createBrowserHistory';
 import reducers from './reducers/reducers';
-import mySagaB from './sagas/sagas';
+import rootSaga from './sagas/sagas';
 import reducersa from './reducers/reducersa';
 import { ConnectedRouter, routerReducer, routerMiddleware } from 'react-router-redux';
 // import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
@@ -18,43 +18,13 @@ const middleware = routerMiddleware(history);
 const store = createStore (
   combineReducers({
     reducers: reducers,
-    reducersa: reducersa,
+    // reducersa: reducersa,
     router: routerReducer
   }),
-  // applyMiddleware(middleware),
+  // applyMiddleware(middleware)
   applyMiddleware(sagaMiddleware)
 );
-sagaMiddleware.run(mySagaB);
-/*function* aaa() {
-  try {
-    console.log(444);
-    const data = yield call(requestPost({
-    method:'user',
-    options:{
-      body: 'key = 1'
-    },
-    callback:(data) => {
-      console.log(data);
-    }
-  }), 123);
-    console.log(123);
-    // yield put({type: "FETCH_SUCCEEDED", data});
-  } catch (error) {
-    console.log(error);
-    // yield put({type: "FETCH_FAILED", error});
-  }
-}
-const a = aaa();
-a.next();*/
-/*requestPost({
-  method:'user',
-  options:{
-    body: 'key = 1'
-  },
-  callback:(data) => {
-    console.log(data);
-  }
-});*/
+sagaMiddleware.run(rootSaga);
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>

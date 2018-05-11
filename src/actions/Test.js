@@ -1,7 +1,6 @@
 const TEST = 'Test';
 import { call, put } from 'redux-saga/effects';
 const getData = (dispatch,count) => {
-  console.log(count);
   let listData = [];
   for (let i = 0; i < count; i++) {
     listData.push({

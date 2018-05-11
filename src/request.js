@@ -18,25 +18,6 @@ function parseJSON(response) {
   return response.json();
 }
 /**
- * [requestGet get请求]
- * @author  Jiang
- * @param  {[type]} options.method   [方法名]
- * @param  {[type]} options.options  [选项]
- * @param  {[type]} options.callback [回调]
- * @return {[type]}                  [description]
- */
-function requestGet({ method, options, callback }) {
-  options.mode = "cors";
-  return fetch(getApi + method)
-    .then(checkStatus)
-    .then(parseJSON)
-    .then((data) => {
-      callback(data);
-    }).catch((err) => {
-      message.error('调用node.js失败,' + JSON.stringify(err) + ',方法名：' + method);
-    });
-}
-/**
  * [requestPost post请求]
  * @author  Jiang
  * @param  {[type]} options.method   [方法名]
@@ -47,15 +28,20 @@ function requestGet({ method, options, callback }) {
 function requestPost({ method, options, callback }) {
   options.mode = "cors";
   options.method = 'POST';
+  options.headers = {
+    'Content-Type': 'application/json'
+  };
   options.body = JSON.stringify(options.body);
-  fetch(getApi + method, options )
+  return fetch(getApi + method, options )
     .then(checkStatus)
     .then(parseJSON)
     .then((data) => {
-      callback(data);
+      // callback(data);
+      return data;
     }).catch((err) => {
-      message.error('调用node.js失败,' + JSON.stringify(err) + ',方法名：' + method);
+      return '';
+      message.error('发送fetch失败' + JSON.stringify(err) + ',方法名：' + method);
     });
 }
 
-export { requestGet, requestPost };
+export { requestPost };
