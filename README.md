@@ -1,5 +1,8 @@
 # http://47.98.231.165/
 
+# 技术栈
+  react + redux + saga + router + es6 + node.js + webpack + mysql
+
 # 部署步骤
 1. npm install //安装node环境
 
