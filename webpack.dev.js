@@ -6,6 +6,7 @@ const webpack = require('webpack');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 module.exports = {
   devtool: 'eval-source-map',
   mode: 'development',
@@ -57,7 +58,8 @@ module.exports = {
     new ExtractTextPlugin({
       filename: '[name].css'
     }),
-    new webpack.NamedModulesPlugin()
+    new webpack.NamedModulesPlugin(),
+    new FaviconsWebpackPlugin('./public/favicon.ico')
     // new webpack.HotModuleReplacementPlugin()
   ],
   devServer: {
