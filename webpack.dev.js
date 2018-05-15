@@ -57,11 +57,11 @@ module.exports = {
     new ExtractTextPlugin({
       filename: '[name].css'
     }),
-    new webpack.NamedModulesPlugin(),
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.NamedModulesPlugin()
+    // new webpack.HotModuleReplacementPlugin()
   ],
   devServer: {
-    hot: true,
+    hot: false,
     historyApiFallback: true,
     //contentBase: path.resolve(__dirname,'src/index.js'),
     compress: true
