@@ -1,8 +1,7 @@
 import { combineReducers } from 'redux';
+import { initialState } from './../store/store';
 import "babel-polyfill";
-const initialState = {
-  listData:[],
-}
+
 const layout = (state = initialState, action) => {
   switch(action.type) {
     case 'GETDATA':
