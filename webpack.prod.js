@@ -68,7 +68,7 @@ module.exports = {
       test: /(\.jsx|\.js)$/,
       extractComments: true,
     }),
-    new FaviconsWebpackPlugin('./public/favicon.ico')
+    new FaviconsWebpackPlugin('./src/images/logo.jpeg')
   ],
   devServer: {
     historyApiFallback: true,

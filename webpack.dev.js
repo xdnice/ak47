@@ -59,7 +59,7 @@ module.exports = {
       filename: '[name].css'
     }),
     new webpack.NamedModulesPlugin(),
-    new FaviconsWebpackPlugin('./public/favicon.ico')
+    new FaviconsWebpackPlugin('./src/images/logo.jpeg')
     // new webpack.HotModuleReplacementPlugin()
   ],
   devServer: {
