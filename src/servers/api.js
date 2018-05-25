@@ -10,3 +10,14 @@ export function fetchData(params) {
     }
   });
 }
+
+export function fetchRegister(params) {
+  return requestPost({
+    method: 'registerUser',
+    options: {
+      body: {
+        params: params.values
+      }
+    }
+  });
+}
