@@ -1,8 +1,8 @@
 import React,{ Component } from 'react';
 import { connect } from 'react-redux';
-import { registerUser } from './../../actions/RegisterAction';
+import { registerUser, clearUser } from './../../actions/RegisterAction';
 import ReactDOM from 'react-dom';
-import { Form, Input, Row, Col, Button } from 'antd';
+import { Form, Input, Row, Col, Button, message } from 'antd';
 import * as styles from './index.css';
 const FormItem = Form.Item;
 
@@ -11,6 +11,24 @@ class Index extends React.Component {
     confirmDirty: false,
     passwordTips: false,
   };
+  componentWillReceiveProps(nextProps) {
+    const { registerRedu } = nextProps;
+    const { dispatch } = this.props;
+    if(registerRedu.RegisterRedu.data) {
+      if(registerRedu.RegisterRedu.data.code) {
+        message.warning(registerRedu.RegisterRedu.data.message);
+        clearUser(dispatch);
+      } else {
+        if(registerRedu.RegisterRedu.data.protocol41) {
+          message.success('注册成功，页面将会自动跳转！');
+          setTimeout(() => {
+            this.props.history.push('/user');
+          },700);
+          clearUser(dispatch);
+        }
+      }
+    }
+  }
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err, values) => {
@@ -70,10 +88,9 @@ class Index extends React.Component {
       });
     }
     callback();
-  }
+  };
   render() {
     const { getFieldDecorator } = this.props.form;
-
     const formItemLayout = {
       labelCol: {
         xs: { span: 24 },

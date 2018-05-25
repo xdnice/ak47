@@ -4,11 +4,10 @@ import { fetchRegister } from '../servers/api';
 
 function* registerUser(action) {
   const data = yield call(fetchRegister, action);
-  /*yield put({
-    type: "GETDATA",
-    count: data.count,
-    listData: data.listData,
-  });*/
+  yield put({
+    type: "REGISTERUSERRU",
+    data,
+  });
 }
 
 function* registerSaga() {
