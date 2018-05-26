@@ -48,7 +48,7 @@ class Index extends Component {
    * @return {[type]} [description]
    */
   clickLogo() {
-    this.props.history.push('/');
+    location.reload();
   }
   /**
    * [clickIcon 用户点击]
