@@ -4,10 +4,7 @@
  */
 import { message } from 'antd';
 //生产环境还是开发环境
-// const getApi = process.env.NODE_ENV === 'production' ? 'http://downfuture.com/' : 'http://localhost:8080/';
-const getApi = 'http://47.98.231.165:9000/';
-
-// const getApi = 'http://localhost:9000/';
+const getApi = process.env.NODE_ENV === 'production' ? 'http://47.98.231.165:9000/' : 'http://localhost:9000/';
 
 function checkStatus(response) {
   if (response.status >= 200 && response.status < 300) {
