@@ -1,8 +1,4 @@
 .content {
-    background-color: red;
-}
-
-.content {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -12,30 +8,27 @@
     background-size: cover;
 }
 
-.login-div {
+.user-div {
+    position: relative;
     height: 387px;
-    padding: 0px 40px;
     background-color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .name {
+    margin-top: 10px;
     font-size: 30px;
     color: #40a9ff;
     display: flex;
     justify-content: center;
 }
 
-.login-form {
-    background-color: transparent;
-}
-
-.login-form-forgot {
-  float: right;
-}
-
-.login-form-button {
-  width: 100%;
+.footerButton {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    text-align: center;
+    height: 50px;
+    background-color: #f6f6f6;
+    border-top: 1px solid #ebebeb;
+    line-height: 50px;
 }

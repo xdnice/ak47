@@ -1,0 +1,7 @@
+.password-div {
+    word-break: break-word;
+    width: 171px;
+    line-height: 17px;
+    font-size: 12px;
+    color: red;
+}
