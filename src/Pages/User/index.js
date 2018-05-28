@@ -30,7 +30,7 @@ class Index extends Component {
     return (
       <div className="content">
         <div className="user-div">
-          <h2 className="name">图魅</h2>
+          <h2 className="name">视线</h2>
           { this.state.isLogin ? <Login /> : <Register /> }
           <div className="footerButton">{ this.state.isLogin ? '没有账号' : '已有账号' }？<a onClick={this.goRegister}>{ this.state.isLogin ? '注册' : '登录' }</a>
           </div>
