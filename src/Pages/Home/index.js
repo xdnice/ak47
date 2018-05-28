@@ -4,6 +4,7 @@ import InfiniteScroll from 'react-infinite-scroller';
 import { connect } from 'react-redux';
 import { Menu, Icon, List, Spin, Affix, Row, Col, Layout } from 'antd';
 import ItemCard from './../../components/ItemCard/ItemCard.js';
+import PropTypes from 'prop-types';
 import './index.css';
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -67,7 +68,7 @@ class Index extends Component {
           <Header style={{background: '#fff',borderBottom: '1px solid #e1e1e1'}}>
             <Row className="row">
               <Col span={12}>
-                <div className="logo" onClick={this.clickLogo.bind(this)}></div>
+                <div className="logo" onClick={this.clickLogo.bind(this)} />
               </Col>
               <Col span={12}>
                 <div className="user">
@@ -96,6 +97,9 @@ class Index extends Component {
     );
   }
 }
+Index.propTypes = {
+  clickUser: PropTypes.string
+};
 function mapStateToProps(state,oWnprops) {
   return state;
 }

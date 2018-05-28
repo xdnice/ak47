@@ -1,10 +1,10 @@
 # http://47.98.231.165/
 
 # 技术栈
-    react + redux + saga + router + es6 + node.js + webpack + mysql + normalizr + PropType
+    react + redux + saga + router + es6 + node.js + webpack + mysql + propTypes
 
 # 部署步骤
-    1. npm install // 安装node环境
+    1. npm i // 安装node环境
 
     2. npm start   // 开启
 
