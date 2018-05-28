@@ -7,9 +7,9 @@ import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router-dom";
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
-import * as styles from './Login.css';
+import * as styles from './UserLogin.css';
 const FormItem = Form.Item;
-class Login extends Component {
+class UserLogin extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -56,7 +56,7 @@ class Login extends Component {
     );
   }
 }
-const WrappedNormalLoginForm = Form.create()(Login);
+const WrappedNormalLoginForm = Form.create()(UserLogin);
 function mapStateToProps(state,oWnprops) {
   return state;
 }

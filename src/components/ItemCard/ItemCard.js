@@ -22,19 +22,20 @@ class ItemCard extends Component {
     let image;
     image = 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png';
     return (
-      <Card
-        className="card"
-        key={"card" + index}
-        hoverable
-        cover={<img alt="src" src={image} className="image" />}
-        actions={[<IconText type="star" text={list.star} />, <IconText type="like" text={list.like} />]}
-      >
-        <Meta
-          avatar={<Avatar src={list.avatar} />}
-          title={list.title}
-          description={list.description}
-        />
-      </Card>
+      <div className="card">
+        <Card
+          key={"card" + index}
+          hoverable
+          cover={<img alt="src" src={image} className="image" />}
+          actions={[<IconText type="star" text={list.star} />, <IconText type="like" text={list.like} />]}
+        >
+          <Meta
+            avatar={<Avatar src={list.avatar} />}
+            title={list.title}
+            description={list.description}
+          />
+        </Card>
+      </div>
     );
   }
 }

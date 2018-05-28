@@ -7,10 +7,10 @@ import { connect } from 'react-redux';
 import { registerUser, clearUser } from './../../actions/RegisterAction';
 import ReactDOM from 'react-dom';
 import { Form, Input, Row, Col, Button, message } from 'antd';
-import * as styles from './Register.css';
+import * as styles from './UserRegister.css';
 const FormItem = Form.Item;
 
-class Register extends React.Component {
+class UserRegister extends React.Component {
   state = {
     confirmDirty: false,
     passwordTips: false,
@@ -162,7 +162,7 @@ class Register extends React.Component {
   }
 }
 
-const WrappedRegistrationForm = Form.create()(Register);
+const WrappedRegistrationForm = Form.create()(UserRegister);
 function mapStateToProps(state,oWnprops) {
   return state;
 }

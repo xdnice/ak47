@@ -1,5 +1,4 @@
 import React from 'react';
-import About from './pages/About/index';
 import Home from './pages/Home/index';
 import User from './pages/User/index';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
@@ -7,10 +6,6 @@ const routes = [
   {
     path: "/",
     component: Home
-  },
-  {
-    path: "/about",
-    component: About
   },
   {
     path: "/user",

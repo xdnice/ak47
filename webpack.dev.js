@@ -52,7 +52,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'ShareImage',
+      title: 'sight',
       template: 'public/index.html'
     }),
     new ExtractTextPlugin({
