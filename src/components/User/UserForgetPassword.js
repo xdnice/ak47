@@ -1,44 +1,27 @@
 /**
- * 注册组件
+ * 忘记密码组件
  * @author  Jiang
  */
 import React,{ Component } from 'react';
 import { connect } from 'react-redux';
-import { registerUser, clearUser } from './../../actions/RegisterAction';
 import ReactDOM from 'react-dom';
 import { Form, Input, Row, Col, Button, message } from 'antd';
-import * as styles from './UserRegister.css';
+import * as styles from './UserForgetPassword.css';
 const FormItem = Form.Item;
 
-class UserRegister extends React.Component {
+class UserForgetPassword extends React.Component {
   state = {
     confirmDirty: false,
     passwordTips: false,
   };
   componentWillReceiveProps(nextProps) {
-    const { registerRedu } = nextProps;
-    const { dispatch } = this.props;
-    if(registerRedu.RegisterRedu.data) {
-      if(registerRedu.RegisterRedu.data.code) {
-        message.warning(registerRedu.RegisterRedu.data.message);
-        clearUser(dispatch);
-      } else {
-        if(registerRedu.RegisterRedu.data.protocol41) {
-          message.success('注册成功，页面将会自动跳转！');
-          setTimeout(() => {
-
-          },700);
-          clearUser(dispatch);
-        }
-      }
-    }
+    
   }
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
         const { dispatch } = this.props;
-        registerUser(dispatch, values);
       }
     });
   }
@@ -108,13 +91,13 @@ class UserRegister extends React.Component {
         <FormItem>
           {getFieldDecorator('password', {
             rules: [{
-              required: true, message: '请输入密码!',
+              required: true, message: '请输入新密码!',
             }, {
               validator: this.validateToNextPassword,
             }],
           })(
             <div>
-              <Input type="password" placeholder="请输入密码" />
+              <Input type="password" placeholder="请输入新密码" />
               {
                 passwordTips ? <div className="password-div">密码应为6-20位，由大小写字母及数字组成</div> : ''
               }
@@ -124,23 +107,23 @@ class UserRegister extends React.Component {
         <FormItem>
           {getFieldDecorator('confirm', {
             rules: [{
-              required: true, message: '请确认密码!',
+              required: true, message: '请确认新密码!',
             }, {
               validator: this.compareToFirstPassword,
             }],
           })(
-            <Input type="password" placeholder="请确认密码" />
+            <Input type="password" placeholder="请确认新密码" />
           )}
         </FormItem>
         <FormItem>
-          <Button type="primary" htmlType="submit" className="login-form-button">注册</Button>
+          <Button type="primary" htmlType="submit" className="login-form-button">修改</Button>
         </FormItem>
       </Form>
     );
   }
 }
 
-const WrappedRegistrationForm = Form.create()(UserRegister);
+const WrappedRegistrationForm = Form.create()(UserForgetPassword);
 function mapStateToProps(state,oWnprops) {
   return state;
 }

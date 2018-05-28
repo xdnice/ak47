@@ -26,6 +26,7 @@ class UserLogin extends Component {
   };
   render() {
     const { getFieldDecorator } = this.props.form;
+    const { forgetPassword } = this.props;
     return (
       <Form onSubmit={this.handleSubmit} className="login-form">
         <FormItem>
@@ -49,7 +50,7 @@ class UserLogin extends Component {
           })(
             <Checkbox className="remenberMe">记住我</Checkbox>
           )}
-          <a className="login-form-forgot" href="">忘记密码</a>
+          <a className="login-form-forgot" onClick={forgetPassword}>忘记密码</a>
           <Button type="primary" htmlType="submit" className="login-form-button">登录</Button>
         </FormItem>
       </Form>
