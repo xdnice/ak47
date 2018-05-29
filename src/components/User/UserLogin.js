@@ -35,7 +35,6 @@ class UserLogin extends Component {
       if (!err) {
         const { dispatch } = this.props;
         login(dispatch, values);
-        console.log('Received values of form: ', values);
       }
     });
   };
