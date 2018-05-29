@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import ReactDOM from 'react-dom';
 import { Form, Input, Button, message } from 'antd';
 import * as styles from './UserRegister.css';
-import { registerUser, clearUser } from './../../actions/UserAction';
+import { register, clear } from './../../actions/UserAction';
 const FormItem = Form.Item;
 
 class UserRegister extends React.Component {
@@ -26,7 +26,7 @@ class UserRegister extends React.Component {
 
         },700);
       }
-      clearUser(dispatch);
+      clear(dispatch);
     }
   }
   handleSubmit = (e) => {
@@ -34,7 +34,7 @@ class UserRegister extends React.Component {
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
         const { dispatch } = this.props;
-        registerUser(dispatch, values);
+        register(dispatch, values);
       }
     });
   }

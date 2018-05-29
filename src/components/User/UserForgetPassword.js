@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import ReactDOM from 'react-dom';
 import { Form, Input, Button, message } from 'antd';
 import * as styles from './UserForgetPassword.css';
-import { updatePassword, clearUser } from './../../actions/UserAction';
+import { updatePassword, clear } from './../../actions/UserAction';
 const FormItem = Form.Item;
 
 class UserForgetPassword extends React.Component {
@@ -23,7 +23,7 @@ class UserForgetPassword extends React.Component {
       } else {
         message.success('密码修改成功', 1);
       }
-      clearUser(dispatch);
+      clear(dispatch);
     }
   }
   handleSubmit = (e) => {

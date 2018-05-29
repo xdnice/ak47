@@ -2,7 +2,7 @@ import { requestPost } from '../request';
 
 export function fetchRegister(params) {
   return requestPost({
-    method: 'registerUser',
+    method: 'register',
     options: {
       body: {
         params: params.values
@@ -14,6 +14,17 @@ export function fetchRegister(params) {
 export function fetchUpdatePassword(params) {
   return requestPost({
     method: 'updatePassword',
+    options: {
+      body: {
+        params: params.values
+      }
+    }
+  });
+}
+
+export function fetchLogin(params) {
+  return requestPost({
+    method: 'login',
     options: {
       body: {
         params: params.values

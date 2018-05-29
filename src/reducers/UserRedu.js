@@ -4,10 +4,10 @@ import "babel-polyfill";
 
 const userRedu = (state = initialState, action) => {
   switch(action.type) {
-    case 'REGISTERUSERRU':
+    case 'REGISTERREDU':
       return Object.assign({}, state, action);
     break;
-    case 'CLEARUSER': 
+    case 'CLEARREDU': 
       return Object.assign({}, state, initialState);
     default:
       return state;

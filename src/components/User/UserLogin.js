@@ -6,20 +6,35 @@ import React,{ Component } from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router-dom";
-import { Form, Icon, Input, Button, Checkbox } from 'antd';
+import { Form, Icon, Input, Button, Checkbox, message } from 'antd';
 import * as styles from './UserLogin.css';
+import { login, clear } from './../../actions/UserAction';
 const FormItem = Form.Item;
 class UserLogin extends Component {
   constructor(props) {
     super(props);
-    this.state = {
+  }
+  componentWillReceiveProps(nextProps) {
+    const { userRedu } = nextProps;
+    const { dispatch } = this.props;
+    if(userRedu.data.code != undefined) {
+      if(userRedu.data.code === 400) {
+        message.warning(userRedu.data.message, 1);
+      } else {
+        message.success('登录成功', 1);
+        setTimeout(() => {
 
-    };
+        },700);
+      }
+      clear(dispatch);
+    }
   }
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
+        const { dispatch } = this.props;
+        login(dispatch, values);
         console.log('Received values of form: ', values);
       }
     });
