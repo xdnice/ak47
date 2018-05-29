@@ -1,27 +1,37 @@
 /**
- * 忘记密码组件
+ * 修改密码组件
  * @author  Jiang
  */
 import React,{ Component } from 'react';
 import { connect } from 'react-redux';
 import ReactDOM from 'react-dom';
-import { Form, Input, Row, Col, Button, message } from 'antd';
+import { Form, Input, Button, message } from 'antd';
 import * as styles from './UserForgetPassword.css';
+import { updatePassword, clearUser } from './../../actions/UserAction';
 const FormItem = Form.Item;
 
 class UserForgetPassword extends React.Component {
   state = {
     confirmDirty: false,
-    passwordTips: false,
   };
   componentWillReceiveProps(nextProps) {
-    
+    const { userRedu } = nextProps;
+    const { dispatch } = this.props;
+    if(userRedu.data.code != undefined) {
+      if(userRedu.data.code === 400) {
+        message.error(userRedu.data.message, 1);
+      } else {
+        message.success('密码修改成功', 1);
+      }
+      clearUser(dispatch);
+    }
   }
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
         const { dispatch } = this.props;
+        updatePassword(dispatch, values);
       }
     });
   }
@@ -61,24 +71,22 @@ class UserForgetPassword extends React.Component {
    */
   validateToNextPassword = (rule, value, callback) => {
     const form = this.props.form;
-    const passWordPattern = /^.*(?=.{6,20})(?=.*\d)(?=.*[a-z]).*$/;
-    if(!passWordPattern.test(value)) {
-      this.setState({
-        passwordTips: true,
-      });
-    } else {
-      if (value && this.state.confirmDirty) {
-        form.validateFields(['confirm'], { force: true });
+    const passWordPattern = /^(?=.*\d)(?=.*[a-z]).{6,20}$/;
+    if(value) {
+      if(!passWordPattern.test(value)) {
+        callback('密码应为6-20位，由大小写字母及数字组成');
+      } else {
+        if (value && this.state.confirmDirty) {
+          form.validateFields(['confirm'], { force: true });
+        }
+        callback();
       }
-      this.setState({
-        passwordTips: false,
-      });
+    } else {
+      callback();
     }
-    callback();
   };
   render() {
     const { getFieldDecorator } = this.props.form;
-    const { passwordTips } = this.state;
     return (
       <Form onSubmit={this.handleSubmit} className="login-form">
         <FormItem>
@@ -98,9 +106,6 @@ class UserForgetPassword extends React.Component {
           })(
             <div>
               <Input type="password" placeholder="请输入新密码" />
-              {
-                passwordTips ? <div className="password-div">密码应为6-20位，由大小写字母及数字组成</div> : ''
-              }
             </div>
           )}
         </FormItem>

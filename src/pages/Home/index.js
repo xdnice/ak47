@@ -1,5 +1,5 @@
 import React,{ Component } from 'react';
-import { getData } from './../../actions/Route';
+import { getData } from './../../actions/HomeAction';
 import InfiniteScroll from 'react-infinite-scroller';
 import { connect } from 'react-redux';
 import { Menu, Icon, List, Spin, Affix, Row, Col, Layout } from 'antd';
@@ -26,7 +26,7 @@ class Index extends Component {
     });
     setTimeout(() => {
       const { dispatch } = this.props;
-      const { count } = this.props.reducers.layout;
+      const { count } = this.props.homeRedu;
       getData(dispatch,count + 24);
     },500);
     setTimeout(() => {
@@ -61,7 +61,7 @@ class Index extends Component {
   }
   render() {
     const { loading, data } = this.state;
-    const { listData, count } = this.props.reducers.layout;
+    const { listData, count } = this.props.homeRedu;
     return (
       <div>
         <Affix>

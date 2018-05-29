@@ -3,27 +3,27 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import createHistory from 'history/createBrowserHistory';
-import reducers from './reducers/reducers';
-import rootSaga from './sagas/sagas';
-import registerSaga from './sagas/RegisterSaga';
-import registerRedu from './reducers/RegisterRedu';
 import { ConnectedRouter, routerReducer, routerMiddleware } from 'react-router-redux';
 import { routeConfig } from './router';
 import createSagaMiddleware from 'redux-saga';
+import homeRedu from './reducers/HomeRedu';
+import userRedu from './reducers/UserRedu';
+import homeSaga from './sagas/HomeSaga';
+import userSaga from './sagas/UserSaga';
 const history = createHistory();
 const sagaMiddleware = createSagaMiddleware();
 // const middleware = routerMiddleware(history);
 const store = createStore (
   combineReducers({
-    reducers,
-    registerRedu,
+    homeRedu,
+    userRedu,
     router: routerReducer
   }),
   // applyMiddleware(middleware)
   applyMiddleware(sagaMiddleware)
 );
-sagaMiddleware.run(rootSaga);
-sagaMiddleware.run(registerSaga);
+sagaMiddleware.run(homeSaga);
+sagaMiddleware.run(userSaga);
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>

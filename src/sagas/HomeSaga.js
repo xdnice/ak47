@@ -2,7 +2,7 @@ import { call, put, takeEvery, takeLatest, delay } from 'redux-saga/effects';
 
 import { fetchData } from '../servers/api';
 
-function* fetchUser(action) {
+function* fetchDataFun(action) {
   const data = yield call(fetchData, action);
   yield put({
     type: "GETDATA",
@@ -11,8 +11,8 @@ function* fetchUser(action) {
   });
 }
 
-function* rootSaga() {
-  yield takeEvery("GETDATA_ASYNC", fetchUser);
+function* homeSaga() {
+  yield takeEvery("GETDATA_ASYNC", fetchDataFun);
 }
 
-export default rootSaga;
+export default homeSaga;

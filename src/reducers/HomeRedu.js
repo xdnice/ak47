@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import { initialState } from './../store/store';
+import { initialState } from './../store/HomeStore';
 import "babel-polyfill";
 
-const layout = (state = initialState, action) => {
+const homeRedu = (state = initialState, action) => {
   switch(action.type) {
     case 'GETDATA':
       return Object.assign({},state,action);
@@ -11,7 +11,8 @@ const layout = (state = initialState, action) => {
       return state;
   }
 }
-const reducers = combineReducers({
-  layout
+/*const reducers = combineReducers({
+  homeRedu
 });
-export default reducers;
+export default reducers;*/
+export default homeRedu;

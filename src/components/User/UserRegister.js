@@ -4,33 +4,29 @@
  */
 import React,{ Component } from 'react';
 import { connect } from 'react-redux';
-import { registerUser, clearUser } from './../../actions/RegisterAction';
 import ReactDOM from 'react-dom';
-import { Form, Input, Row, Col, Button, message } from 'antd';
+import { Form, Input, Button, message } from 'antd';
 import * as styles from './UserRegister.css';
+import { registerUser, clearUser } from './../../actions/UserAction';
 const FormItem = Form.Item;
 
 class UserRegister extends React.Component {
   state = {
     confirmDirty: false,
-    passwordTips: false,
   };
   componentWillReceiveProps(nextProps) {
-    const { registerRedu } = nextProps;
+    const { userRedu } = nextProps;
     const { dispatch } = this.props;
-    if(registerRedu.RegisterRedu.data) {
-      if(registerRedu.RegisterRedu.data.code) {
-        message.warning(registerRedu.RegisterRedu.data.message);
-        clearUser(dispatch);
+    if(userRedu.data.code != undefined) {
+      if(userRedu.data.code === 400) {
+        message.warning(userRedu.data.message, 1);
       } else {
-        if(registerRedu.RegisterRedu.data.protocol41) {
-          message.success('注册成功，页面将会自动跳转！');
-          setTimeout(() => {
+        message.success('注册成功，页面将会自动跳转！', 1);
+        setTimeout(() => {
 
-          },700);
-          clearUser(dispatch);
-        }
+        },700);
       }
+      clearUser(dispatch);
     }
   }
   handleSubmit = (e) => {
@@ -67,6 +63,27 @@ class UserRegister extends React.Component {
     } else {
       callback();
     }
+  };
+  /**
+   * 验证用户名
+   * @author  Jiang
+   * @param  {[type]}   rule     [description]
+   * @param  {[type]}   value    [description]
+   * @param  {Function} callback [description]
+   * @return {[type]}            [description]
+   */
+  validateToNextName = (rule, value , callback) => {
+    const form = this.props.form;
+    const namePattern = /^\d/;
+    if(value) {
+      if(namePattern.test(value)) {
+        callback('用户名不能以数字开头，应为字符串或中文组成');
+      } else {
+        callback();
+      }
+    } else {
+      callback();
+    }
   }
   /**
    * [正则验证密码]
@@ -78,29 +95,33 @@ class UserRegister extends React.Component {
    */
   validateToNextPassword = (rule, value, callback) => {
     const form = this.props.form;
-    const passWordPattern = /^.*(?=.{6,20})(?=.*\d)(?=.*[a-z]).*$/;
-    if(!passWordPattern.test(value)) {
-      this.setState({
-        passwordTips: true,
-      });
-    } else {
-      if (value && this.state.confirmDirty) {
-        form.validateFields(['confirm'], { force: true });
+    const passWordPattern = /^(?=.*\d)(?=.*[a-z]).{6,20}$/;
+    if(value) {
+      if(!passWordPattern.test(value)) {
+        callback('密码应为6-20位，由大小写字母及数字组成');
+      } else {
+        if (value && this.state.confirmDirty) {
+          form.validateFields(['confirm'], { force: true });
+        }
+        callback();
       }
-      this.setState({
-        passwordTips: false,
-      });
+    } else {
+      callback();
     }
-    callback();
   };
   render() {
     const { getFieldDecorator } = this.props.form;
-    const { passwordTips } = this.state;
     return (
       <Form onSubmit={this.handleSubmit} className="login-form">
         <FormItem>
           {getFieldDecorator('userName', {
-            rules: [{ required: true, message: '请输入用户名!', whitespace: true }],
+            rules: [{ 
+              required: true,
+              message: '请输入用户名!',
+              whitespace: true
+            }, {
+              validator: this.validateToNextName,
+            }],
           })(
             <Input placeholder="请输入用户名" />
           )}
@@ -115,9 +136,6 @@ class UserRegister extends React.Component {
           })(
             <div>
               <Input type="password" placeholder="请输入密码" />
-              {
-                passwordTips ? <div className="password-div">密码应为6-20位，由大小写字母及数字组成</div> : ''
-              }
             </div>
           )}
         </FormItem>
