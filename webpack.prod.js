@@ -5,7 +5,6 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 module.exports = {
   devtool: 'hidden-source-map',
   mode: 'production',
@@ -67,8 +66,7 @@ module.exports = {
     new UglifyJSPlugin({
       test: /(\.jsx|\.js)$/,
       extractComments: true,
-    }),
-    new FaviconsWebpackPlugin('./public/logo.jpeg')
+    })
   ],
   devServer: {
     historyApiFallback: true,
