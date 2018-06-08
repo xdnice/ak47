@@ -13,15 +13,6 @@
     align-items: center;
 }
 
-.logo {
-    background-image: url(./../../../public/logo.jpeg);
-    background-size: 100%;
-    width: 100px;
-    height: 60px;
-    background-position-y: -8px;
-    cursor: pointer;
-}
-
 .icon {
     font-size: 28px;
     color: #3089DC;

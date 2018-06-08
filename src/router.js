@@ -10,7 +10,7 @@ const routes = [
   {
     path: "/user",
     component: User
-  },
+  }
 ]
 
 const RouteWithSubRoutes = route => (

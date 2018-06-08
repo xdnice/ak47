@@ -4,7 +4,6 @@ import InfiniteScroll from 'react-infinite-scroller';
 import { connect } from 'react-redux';
 import { Menu, Icon, List, Spin, Affix, Row, Col, Layout } from 'antd';
 import ItemCard from './../../components/ItemCard/ItemCard.js';
-import PropTypes from 'prop-types';
 import './index.css';
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -43,19 +42,6 @@ class Index extends Component {
     });
     return listArray;
   }
-  /**
-   * [clickLogo logo点击]
-   * @author  Jiang
-   * @return {[type]} [description]
-   */
-  clickLogo() {
-    location.reload();
-  }
-  /**
-   * [clickIcon 用户点击]
-   * @author  Jiang
-   * @return {[type]} [description]
-   */
   clickUser() {
     this.props.history.push('/user');
   }
@@ -67,10 +53,7 @@ class Index extends Component {
         <Affix>
           <Header style={{background: '#fff',borderBottom: '1px solid #e1e1e1'}}>
             <Row className="row">
-              <Col span={12}>
-                <div className="logo" onClick={this.clickLogo.bind(this)} />
-              </Col>
-              <Col span={12}>
+              <Col span={24}>
                 <div className="user">
                   <Icon type="user" className="icon" onClick={this.clickUser.bind(this)}/>
                 </div>
@@ -97,9 +80,6 @@ class Index extends Component {
     );
   }
 }
-Index.propTypes = {
-  clickUser: PropTypes.string
-};
 function mapStateToProps(state,oWnprops) {
   return state;
 }

@@ -7,23 +7,19 @@ import { ConnectedRouter, routerReducer, routerMiddleware } from 'react-router-r
 import { routeConfig } from './router';
 import createSagaMiddleware from 'redux-saga';
 import homeRedu from './reducers/HomeRedu';
-import userRedu from './reducers/UserRedu';
 import homeSaga from './sagas/HomeSaga';
-import userSaga from './sagas/UserSaga';
 const history = createHistory();
 const sagaMiddleware = createSagaMiddleware();
 // const middleware = routerMiddleware(history);
 const store = createStore (
   combineReducers({
     homeRedu,
-    userRedu,
     router: routerReducer
   }),
   // applyMiddleware(middleware)
   applyMiddleware(sagaMiddleware)
 );
 sagaMiddleware.run(homeSaga);
-sagaMiddleware.run(userSaga);
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
