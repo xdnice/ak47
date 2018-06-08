@@ -25,7 +25,6 @@
 │   ├── index.js                // index.js
 │   ├── requrest.js             // fetch
 │   ├── router.js               // 路由
-│   └── 
 ├── webpack.dev.js              // 测试环境
 ├── webpack.prod.js             // 生产环境
 </pre>
