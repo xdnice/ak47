@@ -3,11 +3,11 @@
     
     2. git clone https://github.com/xuya227939/ak47.git
     
-    2. cd ak47
+    3. cd ak47
     
-    3. npm i
+    4. npm i
 
-    4. npm start
+    5. npm start
 
 # 发布步骤
     npm run build  // 打包静态文件
