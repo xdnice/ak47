@@ -1,7 +1,3 @@
-/**
- * 封装Fetch API
- * @author  Jiang
- */
 import { message } from 'antd';
 //生产环境还是开发环境
 const getApi = process.env.NODE_ENV === 'production' ? 'http://47.98.231.165:9000/' : 'http://localhost:9000/';
@@ -18,14 +14,6 @@ function checkStatus(response) {
 function parseJSON(response) {
   return response.json();
 }
-/**
- * [requestPost post请求]
- * @author  Jiang
- * @param  {[type]} options.method   [方法名]
- * @param  {[type]} options.options  [选项]
- * @param  {[type]} options.callback [回调]
- * @return {[type]}                  [description]
- */
 function requestPost({ method, options, callback }) {
   options.mode = "cors";
   options.method = 'POST';
