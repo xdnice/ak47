@@ -1,5 +1,5 @@
 # 技术栈
-    react + redux + saga + router + es6 + node.js + webpack
+    react + redux + saga + router + es6 + fetch + webpack
 
 # 部署步骤
     1. npm i // 安装node环境
@@ -11,8 +11,7 @@
 
 
 <pre># 目录结构描述
-├── build                       // 静态文件
-├── public                      // 公共
+├── public                      // 公共目录
 ├── src                         // 入口
 │   ├── action                  // action
 │   ├── components              // 组件
