@@ -2,9 +2,11 @@
     react + redux + saga + router + es6 + fetch + webpack
 
 # 部署步骤
-    1. npm i // 安装node环境
+    1. 先把这个项目 git clone https://github.com/xuya227939/m4a1 下来，启动方式项目README有介绍。
+    
+    2. npm i // 安装node环境
 
-    2. npm start   // 开启
+    3. npm start   // 开启
 
 # 发布步骤
     npm run build  // 打包静态文件
